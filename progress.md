@@ -46,6 +46,21 @@
 - [x] **Pinned Horizontal Scroll Testimonials Track**: Smooth horizontal scrub via mousewheel vertical scroll with real-time dot indicators.
 - [x] **Live & Verified**: Serving synchronously at `http://localhost:3000`.
 
+## Phase 14: Bulletproof Backend Architecture & GitHub Release
+- [x] **Zero-Dependency Core Backend (`server.js`)**: Pure Node.js standard library implementation (`http`, `fs`, `path`, `crypto`, `url`) with 0 external dependencies.
+- [x] **Error Handling Patterns Implemented**:
+  - Domain-Specific Error Hierarchy (`AppError`, `ValidationError`, `RateLimitError`, `NotFoundError`).
+  - Fail-Fast Input Validation & sanitization for all clinical fields.
+  - Safe Atomic JSON Persistence (`data/appointments.json` via staging file + rename).
+  - Centralized error response envelopes & structured JSON operational logging.
+  - In-memory sliding-window IP rate limiting (20 req / 10 min window).
+  - Frontend Graceful Degradation (handles static hosting/offline states seamlessly via `localStorage` fallback).
+  - Production Health Check endpoint (`GET /api/health`).
+- [x] **GitHub Repository Created & Pushed**:
+  - Repository: `https://github.com/ashmitmoharana898-cmd/dr-aarav-sharma-physiotherapy`
+  - GitHub Pages Live Site: `https://ashmitmoharana898-cmd.github.io/dr-aarav-sharma-physiotherapy/`
+  - Documentation: Rich [`README.md`](file:///c:/Users/ashmi/physiotherapy_website/README.md) with architecture overview, local launch steps, and clinical contact info.
+
 
 
 
