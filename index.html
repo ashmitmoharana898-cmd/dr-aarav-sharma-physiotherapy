@@ -1,0 +1,2256 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Aarav Sharma — Consultant Physiotherapist &amp; Sports Rehabilitation Specialist</title>
+  <meta name="description" content="Personalised, evidence-based physiotherapy and sports rehabilitation by Dr. Aarav Sharma in South Delhi, India. Restore pain-free movement."/>
+
+  <!-- Google Fonts: Playfair Display & Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet"/>
+  <!-- Material Symbols Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <!-- Schema.org JSON-LD Medical Practice Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    "name": "Dr. Aarav Sharma",
+    "jobTitle": "Consultant Musculoskeletal & Sports Physiotherapist",
+    "telephone": "+91-98110-24891",
+    "email": "care@draaravsharma.in",
+    "url": "http://localhost:3000",
+    "image": "http://localhost:3000/assets/doctor_aarav.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "The Movement Sanctuary, Suite 402, Block E, Greater Kailash II (GK-2)",
+      "addressLocality": "South Delhi",
+      "addressRegion": "New Delhi",
+      "postalCode": "110048",
+      "addressCountry": "IN"
+    },
+    "openingHours": "Mo,Tu,We,Th,Fr,Sa 08:30-19:30",
+    "medicalSpecialty": "Physiotherapy",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "5000"
+    }
+  }
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              DEFAULT: '#183D32',
+              light: '#235345',
+              dark: '#0f261f'
+            },
+            ivory: {
+              DEFAULT: '#F7F6F0',
+              soft: '#FCFBF7',
+              darker: '#EFECE1'
+            },
+            sage: {
+              DEFAULT: '#A8B9A1',
+              light: '#C4D1BF',
+              dark: '#7A8E73'
+            },
+            travertine: {
+              DEFAULT: '#D9D2C5',
+              soft: '#E8E3DA'
+            },
+            charcoal: {
+              DEFAULT: '#292E29',
+              muted: '#525A52'
+            }
+          },
+          fontFamily: {
+            headline: ["Playfair Display", "serif"],
+            body: ["Manrope", "sans-serif"],
+            label: ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            'card': '16px'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+  <style>
+    /* Material Symbols Styling */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    /* Bottom fade mask for Doctor Portrait exactly matching reference */
+    .fade-bottom-mask {
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 68%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 68%, rgba(0,0,0,0) 100%);
+    }
+
+    /* Gentle Floating Levitation Animation */
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-16px) rotate(1.5deg); }
+    }
+    .animate-float {
+      animation: floating 6s ease-in-out infinite;
+    }
+
+    @keyframes pulseSoft {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    .animate-sparkle {
+      animation: pulseSoft 3s ease-in-out infinite;
+    }
+
+    /* Infinite Marquee Animation */
+    @keyframes marqueeMove {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      display: flex;
+      width: 200%;
+      animation: marqueeMove 32s linear infinite;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Subtle kinetic wave animation */
+    @keyframes kineticDrift {
+      0%, 100% { transform: translateX(0) scaleY(1); }
+      50% { transform: translateX(-20px) scaleY(1.04); }
+    }
+    .animate-kinetic {
+      animation: kineticDrift 14s ease-in-out infinite;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F7F6F0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #A8B9A1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #183D32;
+    }
+
+    /* Service Cards Guarantee 100% Visible & Smooth GPU Rendering */
+    .service-card {
+      opacity: 1 !important;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    /* Ensure Sticky Curtain and Horizontal Pinning never clip unexpectedly */
+    html, body {
+      overflow-x: clip;
+    }
+  </style>
+</head>
+<body class="bg-ivory text-charcoal font-body antialiased selection:bg-sage selection:text-forest">
+
+  <!-- ========================================================================= -->
+  <!-- 1. STICKY HEADER (Animated Navigation) -->
+  <!-- ========================================================================= -->
+  <header id="main-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 py-6 px-6 md:px-12 bg-transparent">
+    <div class="max-w-7xl mx-auto flex justify-between items-center bg-white/70 backdrop-blur-md px-6 md:px-8 py-3.5 rounded-full border border-travertine/60 shadow-sm transition-all duration-300" id="nav-container">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center space-x-2 group">
+        <span class="font-headline text-xl md:text-2xl font-bold tracking-tight text-forest group-hover:text-forest-light transition-colors">
+          Dr. Aarav
+        </span>
+        <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-sage-dark"></span>
+        <span class="hidden sm:inline-block text-[11px] font-semibold tracking-wider uppercase text-charcoal-muted">Physiotherapy</span>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-8 font-label text-xs uppercase tracking-widest text-charcoal">
+        <a href="#hero" class="nav-link text-forest font-semibold hover:text-forest-light transition-colors">Home</a>
+        <a href="#about" class="nav-link text-charcoal-muted hover:text-forest transition-colors">About</a>
+        <a href="#services" class="nav-link text-charcoal-muted hover:text-forest transition-colors">Services</a>
+        <a href="#testimonials" class="nav-link text-charcoal-muted hover:text-forest transition-colors">Reviews</a>
+        <a href="#faq" class="nav-link text-charcoal-muted hover:text-forest transition-colors">FAQ</a>
+      </nav>
+
+        <!-- Right Contact CTA & Mobile Hamburger -->
+        <div class="flex items-center space-x-3">
+          <a href="tel:+919811024891" class="hidden lg:flex items-center text-xs text-charcoal-muted hover:text-forest font-medium transition-colors">
+            <span class="material-symbols-outlined text-base mr-1 text-sage-dark">call</span>
+            +91 98110 24891
+          </a>
+          <a href="#contact" class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-full bg-forest hover:bg-forest-light text-ivory text-xs font-semibold uppercase tracking-wider transition-all duration-200 shadow-sm hover:shadow-md transform hover:-translate-y-0.5">
+            <span>Contact Me</span>
+            <span class="material-symbols-outlined ml-1 text-sm">chevron_right</span>
+          </a>
+          <!-- Mobile Menu Hamburger Button -->
+          <button id="mobile-menu-btn" aria-label="Toggle Mobile Navigation" class="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-forest text-ivory hover:bg-forest-light transition-colors shadow-sm focus:outline-none">
+            <span class="material-symbols-outlined text-xl" id="menu-icon">menu</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden max-w-7xl mx-auto mt-3 px-4 md:hidden">
+      <div class="bg-white/95 backdrop-blur-xl border border-travertine/80 rounded-3xl p-6 shadow-2xl flex flex-col space-y-4">
+        <a href="#hero" class="mobile-nav-link text-sm font-semibold text-forest py-2 border-b border-travertine/40 flex items-center justify-between">
+          <span>Home</span>
+          <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+        </a>
+        <a href="#about" class="mobile-nav-link text-sm font-semibold text-charcoal py-2 border-b border-travertine/40 flex items-center justify-between">
+          <span>About Dr. Aarav</span>
+          <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+        </a>
+        <a href="#services" class="mobile-nav-link text-sm font-semibold text-charcoal py-2 border-b border-travertine/40 flex items-center justify-between">
+          <span>Clinical Services</span>
+          <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+        </a>
+        <a href="#testimonials" class="mobile-nav-link text-sm font-semibold text-charcoal py-2 border-b border-travertine/40 flex items-center justify-between">
+          <span>Patient Reviews</span>
+          <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+        </a>
+        <a href="#faq" class="mobile-nav-link text-sm font-semibold text-charcoal py-2 border-b border-travertine/40 flex items-center justify-between">
+          <span>Frequently Asked Questions</span>
+          <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+        </a>
+        <a href="#contact" class="mobile-nav-link text-sm font-semibold text-charcoal py-2 border-b border-travertine/40 flex items-center justify-between">
+          <span>Clinical Sanctuary (GK-2)</span>
+          <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+        </a>
+        <div class="pt-2 flex flex-col space-y-3">
+          <a href="tel:+919811024891" class="flex items-center justify-center text-xs font-semibold text-forest py-2 rounded-xl bg-ivory border border-travertine">
+            <span class="material-symbols-outlined mr-2 text-sm text-sage-dark">call</span>
+            +91 98110 24891 (Clinic Desk)
+          </a>
+          <a href="#contact" class="mobile-nav-link w-full py-3.5 rounded-full bg-forest text-ivory text-xs font-bold uppercase tracking-wider text-center shadow-md">
+            Book Private Consultation
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 2. HERO SECTION (Reference-Inspired Composition & Layered Parallax) -->
+  <!-- ========================================================================= -->
+  <section id="hero" class="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-gradient-to-b from-ivory via-ivory-soft to-ivory min-h-[92vh] flex items-center">
+    
+    <!-- Oversized Background Watermark Typography ("Sharma") -->
+    <div class="absolute inset-x-0 top-16 md:top-20 pointer-events-none select-none flex justify-center overflow-hidden z-0" id="hero-watermark">
+      <span class="font-headline font-black text-[130px] sm:text-[190px] md:text-[240px] lg:text-[280px] whitespace-nowrap text-white/80 tracking-tight drop-shadow-sm select-none">
+        Sharma
+      </span>
+    </div>
+
+    <!-- Soft ambient background glow -->
+    <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-sage/15 blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/3 -right-40 w-96 h-96 rounded-full bg-travertine/25 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
+        
+        <!-- Left / Center Column: Doctor Portrait with Soft Bottom Fade & Trust Badge -->
+        <div class="lg:col-span-5 relative flex flex-col items-center lg:items-start" id="hero-doctor-container">
+          <div class="relative w-full max-w-[420px] lg:max-w-none">
+            
+            <!-- Doctor Portrait Image with bottom gradient fade mask -->
+            <div class="relative z-10 fade-bottom-mask overflow-hidden rounded-t-[28px]">
+              <img 
+                src="assets/doctor_aarav.jpg" 
+                alt="Dr. Aarav Sharma, Consultant Physiotherapist" 
+                class="w-full h-[460px] md:h-[540px] lg:h-[580px] object-cover object-top transform transition-transform duration-700 hover:scale-[1.02]"
+                id="hero-doctor-img"
+              />
+            </div>
+
+            <!-- Floating Trust Indicator on Bottom Left of Doctor -->
+            <div class="absolute bottom-6 left-0 sm:-left-4 z-20 bg-white/95 backdrop-blur-md px-5 py-3.5 rounded-2xl border border-travertine/80 shadow-lg max-w-[240px] transform hover:scale-105 transition-transform" id="hero-rating-badge">
+              <div class="flex items-center space-x-1.5 text-amber-500 font-bold text-base">
+                <span>4.9</span>
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="text-[11px] text-charcoal-muted font-medium mt-0.5 leading-snug">
+                Recommended by leading clinics &amp; 5,000+ patients alike.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center-Right Column: Greeting, Headline, Credentials, CTAs & Patient Stack -->
+        <div class="lg:col-span-4 space-y-6 pt-4 lg:pt-0" id="hero-content">
+          
+          <!-- Eyebrow -->
+          <div class="hero-item space-y-1">
+            <span class="text-xs md:text-sm font-semibold tracking-wider text-charcoal-muted block">
+              Hey This is
+            </span>
+            <h1 class="font-headline text-4xl sm:text-5xl md:text-6xl font-extrabold text-forest tracking-tight leading-none">
+              Dr. Aarav
+            </h1>
+            <p class="font-body text-xs sm:text-sm font-semibold text-sage-dark tracking-wide pt-1">
+              BPT, MPT — Musculoskeletal &amp; Sports Physiotherapy Expert
+            </p>
+          </div>
+
+          <!-- Description -->
+          <p class="hero-item font-body text-sm md:text-base text-charcoal-muted leading-relaxed">
+            Evidence-based rehabilitation, kinetic alignment, and personalised manual therapy to help you recover comfortably and move without limits.
+          </p>
+
+          <!-- Appointment CTA Button -->
+          <div class="hero-item pt-1">
+            <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-forest hover:bg-forest-light text-ivory text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-1 group">
+              <span>Book An Appointment</span>
+              <span class="material-symbols-outlined ml-2 text-base group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span>
+            </a>
+          </div>
+
+          <!-- Social Proof / Patient Stack (Matching Reference) -->
+          <div class="hero-item pt-3 flex items-center space-x-3.5 border-t border-travertine/60">
+            <!-- Avatar stack -->
+            <div class="flex -space-x-2.5 overflow-hidden">
+              <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-forest text-ivory text-[11px] font-bold ring-2 ring-white">RK</span>
+              <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sage-dark text-white text-[11px] font-bold ring-2 ring-white">AM</span>
+              <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-travertine text-charcoal text-[11px] font-bold ring-2 ring-white">PS</span>
+            </div>
+            <div>
+              <span class="block text-xs font-bold text-forest">5,000+</span>
+              <span class="text-[11px] text-charcoal-muted leading-none">Satisfied Recoveries</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Far Right Column: 3D Translucent Glass Anatomical Spine with Hover Levitation -->
+        <div class="lg:col-span-3 flex justify-center lg:justify-end relative" id="hero-spine-container">
+          <div class="relative w-64 h-80 sm:w-72 sm:h-96 flex items-center justify-center">
+            
+            <!-- Soft back glow behind spine -->
+            <div class="absolute inset-0 bg-sage/20 rounded-full blur-2xl animate-pulse"></div>
+
+            <!-- Floating 3D Glass Spine Sculpture with float animation -->
+            <div class="relative z-10 animate-float" id="hero-glass-spine">
+              <img 
+                src="assets/glass_spine.jpg" 
+                alt="3D Translucent Glass Spine Anatomical Sculpture" 
+                class="w-full h-auto max-h-[380px] object-contain drop-shadow-2xl mix-blend-multiply rounded-2xl"
+              />
+            </div>
+
+            <!-- Sparkle Accents -->
+            <div class="absolute top-8 right-6 text-amber-400 animate-sparkle pointer-events-none">
+              <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">sparkles</span>
+            </div>
+            <div class="absolute bottom-12 left-4 text-emerald-600 animate-sparkle pointer-events-none" style="animation-delay: 1.5s;">
+              <span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 3. APPOINTMENT STRIP (High Contrast Immediate Action) -->
+  <!-- ========================================================================= -->
+  <section class="bg-forest text-ivory py-6 px-6 md:px-12 border-y border-forest-dark relative z-20 shadow-md" id="appointment-strip">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div class="space-y-1">
+        <h2 class="font-headline text-lg sm:text-xl md:text-2xl font-semibold text-ivory tracking-wide">
+          Take the First Step Toward Pain-Free Movement — Consultations Available This Week
+        </h2>
+        <p class="font-body text-xs sm:text-sm text-sage-light">
+          Same-week appointments for acute musculoskeletal assessments and personalised rehabilitation programmes in South Delhi.
+        </p>
+      </div>
+      <a href="#contact" class="inline-flex whitespace-nowrap items-center px-7 py-3 rounded-full bg-ivory text-forest hover:bg-white text-xs font-bold uppercase tracking-wider shadow transition-all duration-200 transform hover:-translate-y-0.5">
+        <span>Book Appointment</span>
+        <span class="material-symbols-outlined ml-1.5 text-sm">calendar_month</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 4. SERVICES SECTION (With Multi-Speed Parallax Background & Elevated Cards) -->
+  <!-- ========================================================================= -->
+  <section class="py-28 relative overflow-hidden bg-ivory-soft" id="services">
+    
+    <!-- PARALLAX BACKGROUND LAYER 1: Authentic Hands-On Physiotherapy Session (Subtle Grounded Parallax) -->
+    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden" id="services-parallax-container">
+      <div 
+        id="services-parallax-bg" 
+        class="absolute -top-[15%] -left-[5%] w-[110%] h-[130%] bg-cover bg-center opacity-[0.38] filter saturate-[0.95] contrast-[1.05]"
+        style="background-image: url('assets/treatment_session.jpg'); will-change: transform;"
+      ></div>
+
+      <!-- PARALLAX BACKGROUND LAYER 2: Biomechanical Kinetic Motion Waves (Moves at counter speed) -->
+      <svg id="services-kinetic-lines" class="absolute inset-0 w-full h-full opacity-[0.25] pointer-events-none animate-kinetic" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-100,200 C300,100 600,400 1000,250 C1400,100 1600,300 1800,200" stroke="#183D32" stroke-width="2.5" stroke-dasharray="8 8"/>
+        <path d="M-100,450 C200,350 700,600 1100,400 C1500,200 1700,500 1900,450" stroke="#7A8E73" stroke-width="2.5"/>
+        <path d="M-100,700 C400,600 800,800 1200,650 C1600,500 1800,700 2000,650" stroke="#183D32" stroke-width="2" stroke-dasharray="12 6"/>
+      </svg>
+      
+      <!-- Soft Warm Ivory Vignette for Maximum Readability and Crisp Contrast -->
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(247,246,240,0.5)_0%,rgba(247,246,240,0.85)_65%,rgba(247,246,240,0.98)_100%)]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-ivory via-transparent to-ivory opacity-90"></div>
+    </div>
+
+    <!-- FOREGROUND CONTENT (Moves at normal scroll speed) -->
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-white/80 border border-sage/40 font-label text-xs uppercase tracking-widest text-sage-dark font-bold shadow-sm">
+          SPECIALISED CARE
+        </span>
+        <h2 class="font-headline text-3xl md:text-5xl text-forest font-bold tracking-tight">
+          Specialised Care. Personalised Recovery.
+        </h2>
+        <p class="font-body text-sm md:text-base text-charcoal-muted leading-relaxed">
+          Targeted clinical treatments tailored to your body, biomechanics, and active lifestyle.
+        </p>
+      </div>
+
+      <!-- Interactive Clinical Symptom & Protocol Quick Filter -->
+      <div class="mb-12 flex flex-wrap justify-center items-center gap-2 max-w-4xl mx-auto" id="service-filter-bar">
+        <span class="text-xs font-bold uppercase tracking-wider text-charcoal-muted mr-1 flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm text-sage-dark">tune</span>
+          Filter by Need:
+        </span>
+        <button type="button" class="symptom-filter-btn px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all bg-forest text-ivory shadow-sm" data-filter="all">
+          All Care Areas
+        </button>
+        <button type="button" class="symptom-filter-btn px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all bg-white/80 hover:bg-white text-charcoal border border-travertine" data-filter="spine">
+          Spine &amp; Neck
+        </button>
+        <button type="button" class="symptom-filter-btn px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all bg-white/80 hover:bg-white text-charcoal border border-travertine" data-filter="sports">
+          Sports Rehab
+        </button>
+        <button type="button" class="symptom-filter-btn px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all bg-white/80 hover:bg-white text-charcoal border border-travertine" data-filter="joints">
+          Joint Care
+        </button>
+        <button type="button" class="symptom-filter-btn px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all bg-white/80 hover:bg-white text-charcoal border border-travertine" data-filter="post-op">
+          Post-Surgical
+        </button>
+      </div>
+
+      <!-- 3x2 Grid of Elevated Service Cards (Guaranteed Visible by Default) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
+        
+        <!-- Card 1 -->
+        <div class="service-card group bg-white/90 backdrop-blur-md p-8 rounded-[16px] border border-travertine/80 hover:border-forest/50 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between transform hover:-translate-y-2" data-category="spine">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-13 h-13 p-3 rounded-xl bg-sage/20 text-forest flex items-center justify-center group-hover:bg-forest group-hover:text-ivory transition-colors">
+                <span class="material-symbols-outlined text-2xl">accessibility_new</span>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-ivory text-charcoal-muted border border-travertine">
+                Targeted Decompression
+              </span>
+            </div>
+            <h3 class="font-headline text-xl font-bold text-forest group-hover:text-forest-light transition-colors">
+              Back &amp; Neck Pain
+            </h3>
+            <p class="font-body text-sm text-charcoal-muted leading-relaxed">
+              Spinal decompression, manual joint mobilization, and postural retraining for cervical, thoracic, and lumbar disc dysfunctions.
+            </p>
+          </div>
+          <button type="button" data-service-key="back-neck" class="service-modal-btn mt-8 inline-flex items-center text-xs font-bold uppercase tracking-wider text-forest group-hover:text-forest-light focus:outline-none">
+            <span>Explore Clinical Protocol</span>
+            <span class="material-symbols-outlined ml-1.5 text-sm group-hover:translate-x-1.5 transition-transform">arrow_forward</span>
+          </button>
+        </div>
+
+        <!-- Card 2: HIGHLIGHTED CARD -->
+        <div class="service-card relative bg-forest text-ivory p-8 rounded-[16px] border border-forest-dark shadow-xl flex flex-col justify-between transform lg:-translate-y-2 hover:-translate-y-3.5 transition-all duration-300" data-category="sports">
+          <div class="absolute -top-3 right-6">
+            <span class="bg-travertine text-forest text-[10px] font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full shadow-md">
+              MOST REQUESTED
+            </span>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-13 h-13 p-3 rounded-xl bg-ivory/15 text-ivory flex items-center justify-center">
+                <span class="material-symbols-outlined text-2xl text-ivory">sports_handball</span>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/10 text-sage-light border border-white/20">
+                Rapid Kinetic Recovery
+              </span>
+            </div>
+            <h3 class="font-headline text-xl font-bold text-ivory">
+              Sports Injury Rehabilitation
+            </h3>
+            <p class="font-body text-sm text-sage-light leading-relaxed">
+              High-performance return-to-sport protocols, ACL &amp; meniscus recovery, muscle tears, and kinetic chain strengthening.
+            </p>
+          </div>
+          <button type="button" data-service-key="sports" class="service-modal-btn mt-8 inline-flex items-center justify-between w-full px-5 py-3 rounded-full bg-ivory text-forest text-xs font-bold uppercase tracking-wider hover:bg-white transition-all shadow-md focus:outline-none">
+            <span>View Protocol &amp; Priority Booking</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card group bg-white/90 backdrop-blur-md p-8 rounded-[16px] border border-travertine/80 hover:border-forest/50 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between transform hover:-translate-y-2" data-category="joints">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-13 h-13 p-3 rounded-xl bg-sage/20 text-forest flex items-center justify-center group-hover:bg-forest group-hover:text-ivory transition-colors">
+                <span class="material-symbols-outlined text-2xl">rheumatology</span>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-ivory text-charcoal-muted border border-travertine">
+                Articulation Mechanics
+              </span>
+            </div>
+            <h3 class="font-headline text-xl font-bold text-forest group-hover:text-forest-light transition-colors">
+              Joint Pain Management
+            </h3>
+            <p class="font-body text-sm text-charcoal-muted leading-relaxed">
+              Osteoarthritis protocols, shoulder impingement decompression, and hip mechanics optimization for fluid articulation.
+            </p>
+          </div>
+          <button type="button" data-service-key="joint" class="service-modal-btn mt-8 inline-flex items-center text-xs font-bold uppercase tracking-wider text-forest group-hover:text-forest-light focus:outline-none">
+            <span>Explore Clinical Protocol</span>
+            <span class="material-symbols-outlined ml-1.5 text-sm group-hover:translate-x-1.5 transition-transform">arrow_forward</span>
+          </button>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="service-card group bg-white/90 backdrop-blur-md p-8 rounded-[16px] border border-travertine/80 hover:border-forest/50 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between transform hover:-translate-y-2" data-category="post-op">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-13 h-13 p-3 rounded-xl bg-sage/20 text-forest flex items-center justify-center group-hover:bg-forest group-hover:text-ivory transition-colors">
+                <span class="material-symbols-outlined text-2xl">healing</span>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-ivory text-charcoal-muted border border-travertine">
+                Surgical Protocol
+              </span>
+            </div>
+            <h3 class="font-headline text-xl font-bold text-forest group-hover:text-forest-light transition-colors">
+              Post-operative Rehabilitation
+            </h3>
+            <p class="font-body text-sm text-charcoal-muted leading-relaxed">
+              Structured protocols for ACL surgery, rotator cuff repair, and joint replacements strictly adhering to surgical guidelines.
+            </p>
+          </div>
+          <button type="button" data-service-key="post-op" class="service-modal-btn mt-8 inline-flex items-center text-xs font-bold uppercase tracking-wider text-forest group-hover:text-forest-light focus:outline-none">
+            <span>Explore Clinical Protocol</span>
+            <span class="material-symbols-outlined ml-1.5 text-sm group-hover:translate-x-1.5 transition-transform">arrow_forward</span>
+          </button>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="service-card group bg-white/90 backdrop-blur-md p-8 rounded-[16px] border border-travertine/80 hover:border-forest/50 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between transform hover:-translate-y-2" data-category="spine">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-13 h-13 p-3 rounded-xl bg-sage/20 text-forest flex items-center justify-center group-hover:bg-forest group-hover:text-ivory transition-colors">
+                <span class="material-symbols-outlined text-2xl">psychology</span>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-ivory text-charcoal-muted border border-travertine">
+                Neuromuscular
+              </span>
+            </div>
+            <h3 class="font-headline text-xl font-bold text-forest group-hover:text-forest-light transition-colors">
+              Neurological Rehabilitation
+            </h3>
+            <p class="font-body text-sm text-charcoal-muted leading-relaxed">
+              Neuromuscular re-education, balance and vestibular retraining, stroke rehabilitation, and progressive functional gait rebuilding.
+            </p>
+          </div>
+          <button type="button" data-service-key="neuro" class="service-modal-btn mt-8 inline-flex items-center text-xs font-bold uppercase tracking-wider text-forest group-hover:text-forest-light focus:outline-none">
+            <span>Explore Clinical Protocol</span>
+            <span class="material-symbols-outlined ml-1.5 text-sm group-hover:translate-x-1.5 transition-transform">arrow_forward</span>
+          </button>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="service-card group bg-white/90 backdrop-blur-md p-8 rounded-[16px] border border-travertine/80 hover:border-forest/50 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between transform hover:-translate-y-2" data-category="spine">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-13 h-13 p-3 rounded-xl bg-sage/20 text-forest flex items-center justify-center group-hover:bg-forest group-hover:text-ivory transition-colors">
+                <span class="material-symbols-outlined text-2xl">straighten</span>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-ivory text-charcoal-muted border border-travertine">
+                Ergonomic Balance
+              </span>
+            </div>
+            <h3 class="font-headline text-xl font-bold text-forest group-hover:text-forest-light transition-colors">
+              Posture &amp; Mobility
+            </h3>
+            <p class="font-body text-sm text-charcoal-muted leading-relaxed">
+              Ergonomic workspace assessment, kinetic chain screening, and functional flexibility training designed for long-term spinal health.
+            </p>
+          </div>
+          <button type="button" data-service-key="posture" class="service-modal-btn mt-8 inline-flex items-center text-xs font-bold uppercase tracking-wider text-forest group-hover:text-forest-light focus:outline-none">
+            <span>Explore Clinical Protocol</span>
+            <span class="material-symbols-outlined ml-1.5 text-sm group-hover:translate-x-1.5 transition-transform">arrow_forward</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 5. INFINITE MARQUEE (Continuously Moving Text Animation) -->
+  <!-- ========================================================================= -->
+  <div class="w-full bg-ivory-darker border-y border-sage/30 overflow-hidden py-4 select-none">
+    <div class="marquee-track whitespace-nowrap flex items-center font-headline text-base md:text-lg text-forest tracking-wider uppercase">
+      <span class="mx-6 font-semibold">MOVEMENT • RECOVERY • WELLNESS • EVIDENCE-BASED CARE • BIOMECHANICS • RESTORING STRENGTH • PRECISION PHYSIOTHERAPY •</span>
+      <span class="mx-6 font-semibold">MOVEMENT • RECOVERY • WELLNESS • EVIDENCE-BASED CARE • BIOMECHANICS • RESTORING STRENGTH • PRECISION PHYSIOTHERAPY •</span>
+      <span class="mx-6 font-semibold">MOVEMENT • RECOVERY • WELLNESS • EVIDENCE-BASED CARE • BIOMECHANICS • RESTORING STRENGTH • PRECISION PHYSIOTHERAPY •</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 5B. FULL-WIDTH PHOTOGRAPHIC PARALLAX BANNER SECTION -->
+  <!-- ========================================================================= -->
+  <section class="relative overflow-hidden py-28 md:py-36 flex items-center justify-center min-h-[580px]" id="cinematic-parallax">
+    
+    <!-- Parallax Background Container (Oversized 120% with 45% dark overlay) -->
+    <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+      <img 
+        id="cinematic-parallax-img" 
+        src="assets/treatment_session.jpg" 
+        alt="Dr. Aarav Sharma hands-on physiotherapy treatment session" 
+        class="absolute left-0 -top-[10%] w-full h-[120%] object-cover object-center will-change-transform select-none"
+      />
+      <!-- Semi-Transparent Dark Overlay (approx 45% black opacity ensuring white text readability) -->
+      <div class="absolute inset-0 bg-black/45"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-forest/35 via-transparent to-forest/25"></div>
+    </div>
+
+    <!-- Foreground Content in Normal Document Flow (Unmoved by Parallax) -->
+    <div class="max-w-5xl mx-auto px-6 md:px-12 relative z-10 text-center text-ivory space-y-6">
+      
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-label uppercase tracking-widest text-sage-light shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-sage-light animate-pulse"></span>
+        <span>The Movement Sanctuary • South Delhi</span>
+      </div>
+
+      <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-ivory leading-tight max-w-4xl mx-auto drop-shadow-sm">
+        “We listen because every movement tells your story.”
+      </h2>
+
+      <p class="font-body text-sm sm:text-base md:text-lg text-sage-light max-w-2xl mx-auto leading-relaxed">
+        Restoring painless physical confidence through hands-on manual therapy, evidence-guided biomechanical correction, and dedicated 1-on-1 private care.
+      </p>
+
+      <div class="pt-3 flex flex-wrap justify-center gap-3 sm:gap-4 text-xs font-semibold uppercase tracking-wider text-ivory">
+        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/15 shadow-sm">
+          <span class="material-symbols-outlined text-sage-light text-base">verified</span>
+          <span>Private 1-on-1 Clinical Suites</span>
+        </div>
+        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/15 shadow-sm">
+          <span class="material-symbols-outlined text-sage-light text-base">timer</span>
+          <span>Full 60-Minute Sessions</span>
+        </div>
+        <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/15 shadow-sm">
+          <span class="material-symbols-outlined text-sage-light text-base">clinical_notes</span>
+          <span>5,000+ Verified Patient Recoveries</span>
+        </div>
+      </div>
+
+      <div class="pt-4">
+        <a href="#contact" class="inline-flex items-center px-8 py-3.5 rounded-full bg-ivory text-forest hover:bg-white text-xs font-bold uppercase tracking-wider shadow-lg transition-all transform hover:-translate-y-1">
+          <span>Schedule Your Consultation</span>
+          <span class="material-symbols-outlined ml-2 text-sm">calendar_month</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 6. WHY CHOOSE ME & STATS (Split Layout with Counter Animations) -->
+  <!-- ========================================================================= -->
+  <section class="py-24 bg-ivory relative" id="about">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left: Consulting Portrait -->
+        <div class="lg:col-span-6 relative about-image-container">
+          <div class="relative rounded-[16px] p-2 bg-travertine/40 border border-travertine shadow-xl overflow-hidden">
+            <img 
+              src="assets/consultation.jpg" 
+              alt="Dr. Aarav Sharma in clinical consultation with patient at The Movement Sanctuary, South Delhi" 
+              class="w-full h-[450px] md:h-[520px] object-cover rounded-[12px] transform transition-transform duration-700 hover:scale-[1.02]"
+            />
+            <div class="absolute -bottom-6 -right-4 sm:bottom-6 sm:-right-6 bg-white/95 backdrop-blur border border-travertine px-6 py-4 rounded-2xl shadow-xl max-w-xs">
+              <p class="font-headline italic text-forest text-sm">
+                “True recovery happens when diagnosis listens to the patient’s lifestyle.”
+              </p>
+              <p class="font-label text-[10px] uppercase font-bold text-charcoal-muted mt-2 tracking-wider">
+                — Clinical Creed
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Narrative & 4 Counter Metric Cards -->
+        <div class="lg:col-span-6 space-y-6 about-content">
+          <span class="font-label text-xs uppercase tracking-widest text-sage-dark font-bold">
+            PERSONAL APPROACH
+          </span>
+          <h2 class="font-headline text-3xl md:text-4xl text-forest font-bold leading-tight">
+            Your Recovery Deserves Personalised Attention
+          </h2>
+          <div class="space-y-4 font-body text-charcoal text-sm md:text-base leading-relaxed">
+            <p>
+              At my South Delhi practice, care is never rushed or transactional. Consultations are conducted exclusively in private 1-on-1 suites where comprehensive biomechanical evaluations uncover root dysfunctions rather than simply treating isolated pain.
+            </p>
+            <p class="text-charcoal-muted">
+              By blending global sports rehabilitation research with hands-on manual therapy and targeted neuromuscular training, I build durable physical confidence so you can return safely to the activities you love.
+            </p>
+          </div>
+
+          <!-- 4 Statistics Metric Cards with Counter Hooks -->
+          <div class="grid grid-cols-2 gap-4 pt-4">
+            
+            <div class="stat-card p-5 rounded-[16px] bg-white border border-travertine/70 shadow-sm hover:shadow-md transition-shadow">
+              <div class="font-headline text-3xl md:text-4xl font-bold text-forest flex items-baseline">
+                <span class="counter" data-target="12">12</span><span>+</span>
+              </div>
+              <p class="font-body text-xs text-charcoal-muted mt-1 uppercase tracking-wider font-semibold">Years Practice</p>
+            </div>
+
+            <!-- Highlighted Stat -->
+            <div class="stat-card p-5 rounded-[16px] bg-forest text-ivory border border-forest-dark shadow-md hover:shadow-lg transition-shadow">
+              <div class="font-headline text-3xl md:text-4xl font-bold text-ivory flex items-baseline">
+                <span class="counter" data-target="5000">5,000</span><span>+</span>
+              </div>
+              <p class="font-body text-xs text-sage-light mt-1 uppercase tracking-wider font-semibold">Patient Recoveries</p>
+            </div>
+
+            <div class="stat-card p-5 rounded-[16px] bg-white border border-travertine/70 shadow-sm hover:shadow-md transition-shadow">
+              <div class="font-headline text-3xl md:text-4xl font-bold text-forest flex items-baseline">
+                <span class="counter" data-target="98">98</span><span>%</span>
+              </div>
+              <p class="font-body text-xs text-charcoal-muted mt-1 uppercase tracking-wider font-semibold">Satisfaction Rate</p>
+            </div>
+
+            <div class="stat-card p-5 rounded-[16px] bg-white border border-travertine/70 shadow-sm hover:shadow-md transition-shadow">
+              <div class="font-headline text-3xl md:text-4xl font-bold text-forest">1-on-1</div>
+              <p class="font-body text-xs text-charcoal-muted mt-1 uppercase tracking-wider font-semibold">Dedicated Attention</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 7. TESTIMONIALS SECTION (Fluid Scroll Scrub Horizontal Slide) -->
+  <!-- ========================================================================= -->
+  <section class="py-28 bg-white border-t border-travertine/50 overflow-hidden relative" id="testimonials">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      
+      <!-- Section Header with carousel arrows -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="font-label text-xs uppercase tracking-widest text-sage-dark font-bold">
+            PATIENT VOICES
+          </span>
+          <h2 class="font-headline text-3xl md:text-4xl text-forest font-bold mt-2">
+            What Patients Say About Their Recovery
+          </h2>
+          <p class="text-xs text-charcoal-muted mt-1">
+            (Cards smoothly glide horizontally as you scroll down)
+          </p>
+        </div>
+
+        <!-- Carousel navigation manual buttons -->
+        <div class="flex items-center space-x-3">
+          <button id="prev-test" aria-label="Previous review" class="w-11 h-11 rounded-full border border-travertine flex items-center justify-center text-forest hover:bg-forest hover:text-ivory transition-all shadow-sm hover:shadow active:scale-95">
+            <span class="material-symbols-outlined text-sm">chevron_left</span>
+          </button>
+          <button id="next-test" aria-label="Next review" class="w-11 h-11 rounded-full border border-travertine flex items-center justify-center text-forest hover:bg-forest hover:text-ivory transition-all shadow-sm hover:shadow active:scale-95">
+            <span class="material-symbols-outlined text-sm">chevron_right</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Testimonial Horizontal Scrub Track -->
+      <div class="relative overflow-visible w-full">
+        <div id="testimonial-track" class="flex gap-8 will-change-transform">
+          
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card flex-shrink-0 w-[85vw] sm:w-[520px] md:w-[560px] relative bg-ivory/70 p-8 md:p-10 rounded-[16px] border border-travertine flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <span class="font-headline text-7xl text-sage/40 absolute top-4 right-8 select-none pointer-events-none">“</span>
+            <div class="relative z-10 space-y-4">
+              <div class="flex text-amber-500 space-x-0.5">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="font-body text-charcoal text-base md:text-lg leading-relaxed italic">
+                “After months of severe L4-L5 disc sciatica, Dr. Sharma diagnosed my mechanical dysfunction on day one. Within 6 weeks, I was back to running pain-free.”
+              </p>
+            </div>
+            <div class="pt-8 border-t border-travertine/60 mt-8 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-forest text-ivory font-headline font-bold flex items-center justify-center text-sm shadow">
+                MV
+              </div>
+              <div>
+                <h3 class="font-headline font-bold text-forest text-base">Marcus Vance</h3>
+                <p class="font-body text-xs text-charcoal-muted">Marathon Runner &amp; Architect, New Delhi</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card flex-shrink-0 w-[85vw] sm:w-[520px] md:w-[560px] relative bg-ivory/70 p-8 md:p-10 rounded-[16px] border border-travertine flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <span class="font-headline text-7xl text-sage/40 absolute top-4 right-8 select-none pointer-events-none">“</span>
+            <div class="relative z-10 space-y-4">
+              <div class="flex text-amber-500 space-x-0.5">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="font-body text-charcoal text-base md:text-lg leading-relaxed italic">
+                “Post-ACL reconstruction surgery was daunting until I started my rehab with Dr. Aarav. His precision protocols and reassuring approach made all the difference.”
+              </p>
+            </div>
+            <div class="pt-8 border-t border-travertine/60 mt-8 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-forest text-ivory font-headline font-bold flex items-center justify-center text-sm shadow">
+                ER
+              </div>
+              <div>
+                <h3 class="font-headline font-bold text-forest text-base">Elena Rostova</h3>
+                <p class="font-body text-xs text-charcoal-muted">Classical Dancer &amp; Movement Coach, South Delhi</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card flex-shrink-0 w-[85vw] sm:w-[520px] md:w-[560px] relative bg-ivory/70 p-8 md:p-10 rounded-[16px] border border-travertine flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <span class="font-headline text-7xl text-sage/40 absolute top-4 right-8 select-none pointer-events-none">“</span>
+            <div class="relative z-10 space-y-4">
+              <div class="flex text-amber-500 space-x-0.5">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="font-body text-charcoal text-base md:text-lg leading-relaxed italic">
+                “Suffered from chronic cervical radiculopathy for over 2 years. Dr. Aarav’s manual decompression and postural retraining completely eliminated the numbness.”
+              </p>
+            </div>
+            <div class="pt-8 border-t border-travertine/60 mt-8 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-forest text-ivory font-headline font-bold flex items-center justify-center text-sm shadow">
+                RK
+              </div>
+              <div>
+                <h3 class="font-headline font-bold text-forest text-base">Rajesh Khanna</h3>
+                <p class="font-body text-xs text-charcoal-muted">Senior Consultant, Greater Kailash, New Delhi</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 4 -->
+          <div class="testimonial-card flex-shrink-0 w-[85vw] sm:w-[520px] md:w-[560px] relative bg-ivory/70 p-8 md:p-10 rounded-[16px] border border-travertine flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <span class="font-headline text-7xl text-sage/40 absolute top-4 right-8 select-none pointer-events-none">“</span>
+            <div class="relative z-10 space-y-4">
+              <div class="flex text-amber-500 space-x-0.5">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="font-body text-charcoal text-base md:text-lg leading-relaxed italic">
+                “His focus on biomechanics and movement re-education helped me overcome chronic knee patellofemoral pain. Exceptional clinical bedside manner.”
+              </p>
+            </div>
+            <div class="pt-8 border-t border-travertine/60 mt-8 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-forest text-ivory font-headline font-bold flex items-center justify-center text-sm shadow">
+                SM
+              </div>
+              <div>
+                <h3 class="font-headline font-bold text-forest text-base">Shreya Mukherjee</h3>
+                <p class="font-body text-xs text-charcoal-muted">Triathlete &amp; Financial Analyst, New Delhi</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Pagination Indicators -->
+      <div class="flex justify-center items-center space-x-2 mt-10" id="carousel-dots">
+        <button aria-label="Slide 1" class="w-6 h-2 rounded-full bg-forest transition-all dot-indicator" data-index="0"></button>
+        <button aria-label="Slide 2" class="w-2 h-2 rounded-full bg-travertine transition-all dot-indicator" data-index="1"></button>
+        <button aria-label="Slide 3" class="w-2 h-2 rounded-full bg-travertine transition-all dot-indicator" data-index="2"></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 8. CONTACT & CONSULTATION SANCTUARY -->
+  <!-- ========================================================================= -->
+  <section class="py-24 bg-ivory" id="contact">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left: Clinical Location & Details -->
+        <div class="lg:col-span-5 space-y-8 contact-info">
+          <div>
+            <span class="font-label text-xs uppercase tracking-widest text-sage-dark font-bold">
+              CLINICAL SANCTUARY
+            </span>
+            <h2 class="font-headline text-3xl md:text-4xl text-forest font-bold mt-2">
+              Book Your Private Consultation
+            </h2>
+            <p class="font-body text-sm text-charcoal-muted mt-3">
+              Consultations are conducted in an environment designed for peace, focus, and thorough biomechanical examination.
+            </p>
+          </div>
+
+          <!-- Stylized Clinical Card with Map Accent -->
+          <div class="bg-white p-6 md:p-8 rounded-[16px] border border-travertine shadow-sm space-y-6">
+            <div class="space-y-4">
+              <div class="flex items-start gap-3.5">
+                <span class="material-symbols-outlined text-forest mt-0.5">location_on</span>
+                <div>
+                  <h3 class="text-xs font-bold uppercase text-charcoal tracking-wider">Practice Address</h3>
+                  <p class="text-xs text-charcoal-muted mt-1 leading-relaxed">
+                    The Movement Sanctuary, Suite 402, Block E<br/>
+                    Greater Kailash II (GK-2), South Delhi, New Delhi 110048, India
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3.5">
+                <span class="material-symbols-outlined text-forest mt-0.5">schedule</span>
+                <div>
+                  <h3 class="text-xs font-bold uppercase text-charcoal tracking-wider">Clinical Hours</h3>
+                  <p class="text-xs text-charcoal-muted mt-1">
+                    Mon – Sat: 08:30 AM – 07:30 PM<br/>
+                    Sun: Prior Appointment Only (Acute Cases)
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3.5">
+                <span class="material-symbols-outlined text-forest mt-0.5">call</span>
+                <div>
+                  <h3 class="text-xs font-bold uppercase text-charcoal tracking-wider">Direct Clinical Desk</h3>
+                  <a href="tel:+919811024891" class="text-xs font-semibold text-forest hover:underline mt-1 block">
+                    +91 98110 24891 / +91 11 4165 0831
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3.5">
+                <span class="material-symbols-outlined text-forest mt-0.5">mail</span>
+                <div>
+                  <h3 class="text-xs font-bold uppercase text-charcoal tracking-wider">Confidential Enquiries</h3>
+                  <a href="mailto:care@draaravsharma.in" class="text-xs font-semibold text-forest hover:underline mt-1 block">
+                    care@draaravsharma.in
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stylized Minimal Map Graphic Accent -->
+            <div class="w-full h-32 rounded-xl bg-ivory-darker border border-travertine/60 flex items-center justify-center relative overflow-hidden text-center p-4">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#183D32_1px,transparent_1px)] [background-size:12px_12px]"></div>
+              <div class="relative z-10 flex flex-col items-center">
+                <span class="material-symbols-outlined text-forest text-2xl">pin_drop</span>
+                <span class="text-[11px] font-semibold text-forest uppercase tracking-wider mt-1">GREATER KAILASH II (GK-2) CLINIC</span>
+                <span class="text-[10px] text-charcoal-muted">Valet &amp; Dedicated Parking Available, South Delhi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: High-Conversion Booking Form -->
+        <div class="lg:col-span-7 contact-form-wrapper">
+          <div class="bg-white p-8 md:p-10 rounded-[16px] border border-travertine shadow-md">
+            <h3 class="font-headline text-2xl font-bold text-forest mb-2">Request an Appointment</h3>
+            <p class="font-body text-xs text-charcoal-muted mb-8">Please provide your details below. Our practice coordinator will confirm your slot within 2 hours.</p>
+
+            <form id="consultation-form" class="space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-charcoal mb-2">Full Name *</label>
+                  <input type="text" id="patient-name" required placeholder="e.g. Priya Malhotra" class="w-full text-sm px-4 py-3 rounded-xl border border-travertine bg-ivory-soft focus:bg-white focus:border-forest focus:ring-1 focus:ring-forest outline-none transition"/>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-charcoal mb-2">Phone Number *</label>
+                  <input type="tel" id="patient-phone" required placeholder="+91 98765 43210" class="w-full text-sm px-4 py-3 rounded-xl border border-travertine bg-ivory-soft focus:bg-white focus:border-forest focus:ring-1 focus:ring-forest outline-none transition"/>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-charcoal mb-2">Email Address *</label>
+                  <input type="email" id="patient-email" required placeholder="priya@example.com" class="w-full text-sm px-4 py-3 rounded-xl border border-travertine bg-ivory-soft focus:bg-white focus:border-forest focus:ring-1 focus:ring-forest outline-none transition"/>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-charcoal mb-2">Condition / Reason *</label>
+                  <select id="patient-condition" class="w-full text-sm px-4 py-3 rounded-xl border border-travertine bg-ivory-soft focus:bg-white focus:border-forest focus:ring-1 focus:ring-forest outline-none transition">
+                    <option value="Sports Injury Rehab">Sports Injury Rehab</option>
+                    <option value="Back &amp; Neck Pain">Back &amp; Neck Pain</option>
+                    <option value="Joint Pain (Hip, Knee, Shoulder)">Joint Pain (Hip, Knee, Shoulder)</option>
+                    <option value="Post-Operative Recovery">Post-Operative Recovery</option>
+                    <option value="Neurological Rehabilitation">Neurological Rehabilitation</option>
+                    <option value="Ergonomics &amp; Kinetic Alignment">Ergonomics &amp; Kinetic Alignment</option>
+                    <option value="General Diagnostic Assessment">General Diagnostic Assessment</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-charcoal mb-2">Preferred Date *</label>
+                  <input type="date" id="patient-date" required class="w-full text-sm px-4 py-3 rounded-xl border border-travertine bg-ivory-soft focus:bg-white focus:border-forest focus:ring-1 focus:ring-forest outline-none transition"/>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-charcoal mb-2">Preferred Time Slot *</label>
+                  <select id="patient-timeslot" class="w-full text-sm px-4 py-3 rounded-xl border border-travertine bg-ivory-soft focus:bg-white focus:border-forest focus:ring-1 focus:ring-forest outline-none transition">
+                    <option value="Morning (08:30 AM – 12:00 PM)">Morning (08:30 AM – 12:00 PM)</option>
+                    <option value="Afternoon (12:00 PM – 04:00 PM)">Afternoon (12:00 PM – 04:00 PM)</option>
+                    <option value="Evening (04:00 PM – 07:30 PM)">Evening (04:00 PM – 07:30 PM)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-charcoal mb-2">Preferred Consultation Mode</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <label class="flex items-center gap-3 p-3.5 rounded-xl border border-travertine bg-ivory-soft cursor-pointer hover:border-forest transition">
+                    <input type="radio" name="mode" value="In-Clinic (GK-2, South Delhi)" checked class="text-forest focus:ring-forest mode-radio"/>
+                    <span class="text-xs font-semibold text-charcoal">In-Clinic (GK-2, South Delhi)</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3.5 rounded-xl border border-travertine bg-ivory-soft cursor-pointer hover:border-forest transition">
+                    <input type="radio" name="mode" value="Virtual (PAN-India &amp; Global)" class="text-forest focus:ring-forest mode-radio"/>
+                    <span class="text-xs font-semibold text-charcoal">Virtual (PAN-India &amp; Global)</span>
+                  </label>
+                </div>
+                <!-- Dynamic mode guidance card -->
+                <div id="mode-guidance-card" class="mt-2.5 p-3 rounded-xl bg-ivory border border-travertine/80 flex items-center gap-2.5 text-xs text-forest">
+                  <span class="material-symbols-outlined text-base text-sage-dark">pin_drop</span>
+                  <span id="mode-guidance-text">Suite 402, Block E, Greater Kailash II (GK-2), South Delhi — Valet parking available.</span>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-charcoal mb-2">Message or Brief Symptoms</label>
+                <textarea id="patient-symptoms" rows="3" placeholder="Briefly describe onset, pain severity, or specific activities affected..." class="w-full text-sm px-4 py-3 rounded-xl border border-travertine bg-ivory-soft focus:bg-white focus:border-forest focus:ring-1 focus:ring-forest outline-none transition"></textarea>
+              </div>
+
+              <div class="flex items-start gap-3 pt-1">
+                <input type="checkbox" id="consent" required class="mt-1 rounded text-forest focus:ring-forest border-travertine"/>
+                <label for="consent" class="text-xs text-charcoal-muted leading-snug">
+                  I consent to Dr. Aarav Sharma Physiotherapy processing my clinical contact details in accordance with medical DPDP governance.
+                </label>
+              </div>
+
+              <button type="submit" class="w-full py-4 rounded-full bg-forest hover:bg-forest-light text-ivory text-xs font-bold uppercase tracking-widest shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+                Submit Consultation Request
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 9. FAQ ACCORDION -->
+  <!-- ========================================================================= -->
+  <section class="py-24 bg-white border-t border-travertine/60" id="faq">
+    <div class="max-w-4xl mx-auto px-6 md:px-12">
+      
+      <div class="text-center mb-16 space-y-2">
+        <span class="font-label text-xs uppercase tracking-widest text-sage-dark font-bold">
+          PATIENT ADVISORY
+        </span>
+        <h2 class="font-headline text-3xl md:text-4xl text-forest font-bold">
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <!-- Accordion Container -->
+      <div class="space-y-4">
+        
+        <!-- FAQ 1 -->
+        <details class="group bg-ivory/60 rounded-[14px] border border-travertine/70 p-5 transition-all open:bg-ivory shadow-sm" open>
+          <summary class="flex justify-between items-center cursor-pointer list-none text-forest font-headline font-semibold text-lg">
+            <span>How do I book an initial consultation?</span>
+            <span class="material-symbols-outlined text-forest transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="mt-4 font-body text-sm text-charcoal-muted leading-relaxed border-t border-travertine/50 pt-3">
+            You can book directly via the digital booking form on this site, call our South Delhi practice desk at +91 98110 24891, or send an enquiry via WhatsApp / email to care@draaravsharma.in.
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="group bg-ivory/60 rounded-[14px] border border-travertine/70 p-5 transition-all open:bg-ivory shadow-sm">
+          <summary class="flex justify-between items-center cursor-pointer list-none text-forest font-headline font-semibold text-lg">
+            <span>What should I expect during my first 60-minute assessment?</span>
+            <span class="material-symbols-outlined text-forest transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="mt-4 font-body text-sm text-charcoal-muted leading-relaxed border-t border-travertine/50 pt-3">
+            Your initial session consists of a comprehensive clinical history, full kinetic chain and biomechanical evaluation, orthopedic testing, diagnosis explanation, and an immediate preliminary hands-on treatment alongside your personalised roadmap.
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="group bg-ivory/60 rounded-[14px] border border-travertine/70 p-5 transition-all open:bg-ivory shadow-sm">
+          <summary class="flex justify-between items-center cursor-pointer list-none text-forest font-headline font-semibold text-lg">
+            <span>Do I require a doctor's referral prior to treatment?</span>
+            <span class="material-symbols-outlined text-forest transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="mt-4 font-body text-sm text-charcoal-muted leading-relaxed border-t border-travertine/50 pt-3">
+            No referral is required. Direct consultation is standard clinical practice in India. You may schedule an initial biomechanical assessment directly. If you plan to claim reimbursement through private health insurance or a corporate TPA, we provide comprehensive itemized clinical receipts and medical documentation.
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="group bg-ivory/60 rounded-[14px] border border-travertine/70 p-5 transition-all open:bg-ivory shadow-sm">
+          <summary class="flex justify-between items-center cursor-pointer list-none text-forest font-headline font-semibold text-lg">
+            <span>How many treatment sessions will I typically need?</span>
+            <span class="material-symbols-outlined text-forest transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="mt-4 font-body text-sm text-charcoal-muted leading-relaxed border-t border-travertine/50 pt-3">
+            Acute conditions often resolve substantially within 3 to 5 targeted sessions. Chronic dysfunctions or post-operative rehabilitations adhere to structured multi-phase programmes of 6 to 12 weeks with periodic progress testing.
+          </div>
+        </details>
+
+        <!-- FAQ 5 -->
+        <details class="group bg-ivory/60 rounded-[14px] border border-travertine/70 p-5 transition-all open:bg-ivory shadow-sm">
+          <summary class="flex justify-between items-center cursor-pointer list-none text-forest font-headline font-semibold text-lg">
+            <span>Do you offer virtual or telehealth consultations?</span>
+            <span class="material-symbols-outlined text-forest transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="mt-4 font-body text-sm text-charcoal-muted leading-relaxed border-t border-travertine/50 pt-3">
+            Yes. We offer secure HD video consultations for patients across India (PAN-India) as well as international clients seeking specialist biomechanical guidance, ergonomic triage, and structured remote rehabilitation protocols.
+          </div>
+        </details>
+
+        <!-- FAQ 6 -->
+        <details class="group bg-ivory/60 rounded-[14px] border border-travertine/70 p-5 transition-all open:bg-ivory shadow-sm">
+          <summary class="flex justify-between items-center cursor-pointer list-none text-forest font-headline font-semibold text-lg">
+            <span>What should I wear or bring to my appointment?</span>
+            <span class="material-symbols-outlined text-forest transition-transform duration-300 group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="mt-4 font-body text-sm text-charcoal-muted leading-relaxed border-t border-travertine/50 pt-3">
+            Please wear comfortable activewear or loose athletic clothing that allows unobstructed assessment of the affected joint or spine. Bring any relevant MRI, X-ray, or surgical discharge reports.
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 10. FINAL CTA -->
+  <!-- ========================================================================= -->
+  <section class="py-20 bg-gradient-to-b from-ivory to-ivory-darker border-t border-travertine/80">
+    <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
+      <span class="w-12 h-0.5 bg-forest mx-auto block mb-4"></span>
+      <h2 class="font-headline text-3xl md:text-5xl text-forest font-bold tracking-tight">
+        Your Journey to Better Movement Starts Today.
+      </h2>
+      <p class="font-body text-base text-charcoal-muted max-w-xl mx-auto leading-relaxed">
+        Restore pain-free motion, rebuild athletic resilience, and reclaim the freedom of active living under expert clinical guidance.
+      </p>
+      <div class="pt-4">
+        <a href="#contact" class="inline-flex items-center px-9 py-4 rounded-full bg-forest hover:bg-forest-light text-ivory text-xs font-bold uppercase tracking-widest shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <span>Book an Appointment</span>
+          <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 11. LUXURY EDITORIAL FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="bg-neutral-950 text-neutral-100 w-full border-t border-neutral-800">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-16 flex flex-col md:flex-row justify-between items-center gap-8">
+      
+      <!-- Brand & Accreditation Anchor -->
+      <div class="space-y-2 text-center md:text-left">
+        <span class="font-headline text-lg font-semibold tracking-wide text-neutral-100 block">
+          Dr. Aarav Sharma — BPT, MPT (Sports &amp; Musculoskeletal), MIAP, DCP Reg.
+        </span>
+        <p class="font-body text-xs text-neutral-400">
+          Greater Kailash II, South Delhi, New Delhi 110048, India | +91 98110 24891 | care@draaravsharma.in
+        </p>
+        <p class="font-body text-xs text-neutral-400">
+          © 2025 Dr. Aarav Sharma Physiotherapy. Member of Indian Association of Physiotherapists (MIAP) • Delhi Council for Physiotherapy &amp; Occupational Therapy (DCP).
+        </p>
+      </div>
+
+      <!-- Shared Footer Links -->
+      <div class="flex flex-wrap justify-center gap-6 font-body text-xs text-neutral-400">
+        <a href="#hero" class="text-neutral-400 hover:text-white transition-colors duration-150">Clinical Governance</a>
+        <a href="#hero" class="text-neutral-400 hover:text-white transition-colors duration-150">Privacy Policy</a>
+        <a href="#hero" class="text-neutral-400 hover:text-white transition-colors duration-150">Terms of Care</a>
+        <a href="#contact" class="text-neutral-400 hover:text-white transition-colors duration-150">Patient Portal</a>
+        <a href="#contact" class="text-neutral-100 font-medium hover:text-white transition-colors duration-150">Direct Referral</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL 1: CLINICAL TREATMENT PROTOCOL DETAILS -->
+  <!-- ========================================================================= -->
+  <div id="service-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/60 backdrop-blur-sm transition-opacity duration-300">
+    <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-travertine overflow-hidden transform transition-all my-8 animate-fade-in">
+      
+      <!-- Modal Header Banner -->
+      <div class="bg-forest text-ivory p-6 md:p-8 relative">
+        <button id="close-service-modal" aria-label="Close Modal" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-ivory flex items-center justify-center transition">
+          <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+        <span id="modal-service-badge" class="inline-block px-3 py-1 rounded-full bg-white/15 text-sage-light text-[10px] font-bold uppercase tracking-widest border border-white/20 mb-3">
+          CLINICAL PROTOCOL
+        </span>
+        <h3 id="modal-service-title" class="font-headline text-2xl md:text-3xl font-bold text-ivory">
+          Back &amp; Neck Pain Protocol
+        </h3>
+        <p id="modal-service-desc" class="font-body text-xs md:text-sm text-sage-light mt-2 leading-relaxed">
+          Comprehensive spinal mechanics and joint decompression.
+        </p>
+      </div>
+
+      <!-- Modal Body Content -->
+      <div class="p-6 md:p-8 space-y-6 max-h-[60vh] overflow-y-auto">
+        
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-charcoal mb-3 flex items-center gap-2">
+            <span class="material-symbols-outlined text-forest text-base">clinical_notes</span>
+            Clinical Methodology &amp; Techniques
+          </h4>
+          <div id="modal-service-techniques" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-charcoal-muted">
+            <!-- Dynamic pills inserted via JS -->
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-charcoal mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-forest text-base">schedule</span>
+            Session Structure &amp; Expected Timeline
+          </h4>
+          <p id="modal-service-timeline" class="text-xs text-charcoal-muted leading-relaxed bg-ivory p-4 rounded-xl border border-travertine/70">
+            Initial 60-minute biomechanical evaluation followed by 45-minute hands-on treatment sessions.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-charcoal mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-forest text-base">verified</span>
+            Included in Your Consultation
+          </h4>
+          <ul class="text-xs text-charcoal-muted space-y-2 list-disc list-inside">
+            <li>Private 1-on-1 consultation suite with Dr. Aarav Sharma</li>
+            <li>3D kinetic posture and joint mobility evaluation</li>
+            <li>Manual joint mobilization &amp; soft tissue decompression</li>
+            <li>Customized progressive home exercise portal access</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer CTA -->
+      <div class="p-6 bg-ivory border-t border-travertine flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-xs text-charcoal-muted text-center sm:text-left">
+          <span class="font-semibold text-forest block">Greater Kailash II Clinic</span>
+          <span>Same-week slots available</span>
+        </div>
+        <button id="modal-book-cta" class="w-full sm:w-auto px-7 py-3 rounded-full bg-forest hover:bg-forest-light text-ivory text-xs font-bold uppercase tracking-wider shadow-md transition transform hover:-translate-y-0.5">
+          Select &amp; Book This Treatment
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL 2: APPOINTMENT CONFIRMATION SUCCESS -->
+  <!-- ========================================================================= -->
+  <div id="booking-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/60 backdrop-blur-sm transition-opacity duration-300">
+    <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-travertine overflow-hidden transform transition-all my-8 p-6 md:p-8 text-center space-y-6 animate-fade-in">
+      
+      <div class="w-16 h-16 rounded-full bg-emerald-100 text-forest mx-auto flex items-center justify-center shadow-inner">
+        <span class="material-symbols-outlined text-3xl">check_circle</span>
+      </div>
+
+      <div class="space-y-1">
+        <span class="inline-block px-3 py-1 rounded-full bg-sage/20 text-forest text-[10px] font-bold uppercase tracking-widest">
+          REQUEST CONFIRMED
+        </span>
+        <h3 class="font-headline text-2xl font-bold text-forest">
+          Consultation Request Received
+        </h3>
+        <p class="font-body text-xs text-charcoal-muted">
+          Our clinic coordinator at The Movement Sanctuary (GK-2) will reach out within 2 hours to finalize your exact slot.
+        </p>
+      </div>
+
+      <!-- Reference Code Card -->
+      <div class="bg-ivory rounded-2xl p-4 border border-travertine text-left space-y-2 text-xs">
+        <div class="flex justify-between items-center border-b border-travertine/60 pb-2">
+          <span class="text-charcoal-muted">Reference ID</span>
+          <span id="confirm-ref-code" class="font-mono font-bold text-forest">#AS-GK2-8491</span>
+        </div>
+        <div class="flex justify-between items-center border-b border-travertine/60 pb-2">
+          <span class="text-charcoal-muted">Patient Name</span>
+          <span id="confirm-patient-name" class="font-semibold text-charcoal">Priya Malhotra</span>
+        </div>
+        <div class="flex justify-between items-center border-b border-travertine/60 pb-2">
+          <span class="text-charcoal-muted">Selected Protocol</span>
+          <span id="confirm-condition" class="font-semibold text-charcoal">Sports Injury Rehab</span>
+        </div>
+        <div class="flex justify-between items-center border-b border-travertine/60 pb-2">
+          <span class="text-charcoal-muted">Requested Slot</span>
+          <span id="confirm-datetime" class="font-semibold text-charcoal">Tomorrow • Morning</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-charcoal-muted">Mode</span>
+          <span id="confirm-mode" class="font-semibold text-forest">In-Clinic (GK-2, South Delhi)</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex flex-col sm:flex-row gap-3 pt-2">
+        <button id="download-ics-btn" class="flex-1 inline-flex items-center justify-center px-5 py-3 rounded-full bg-forest text-ivory text-xs font-bold uppercase tracking-wider hover:bg-forest-light transition shadow">
+          <span class="material-symbols-outlined mr-1.5 text-sm">calendar_month</span>
+          <span>Add to Calendar (.ics)</span>
+        </button>
+        <button id="close-booking-modal" class="flex-1 inline-flex items-center justify-center px-5 py-3 rounded-full bg-ivory text-charcoal hover:bg-travertine/50 text-xs font-semibold uppercase tracking-wider transition border border-travertine">
+          <span>Done</span>
+        </button>
+      </div>
+
+      <p class="text-[11px] text-charcoal-muted">
+        Need urgent clinical assistance? Call direct desk: <a href="tel:+919811024891" class="text-forest font-bold hover:underline">+91 98110 24891</a>
+      </p>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- FLOATING CONCIERGE & NAVIGATION CONTROLS -->
+  <!-- ========================================================================= -->
+  <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end space-y-3">
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to Top" class="opacity-0 pointer-events-none transition-all duration-300 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-travertine text-forest shadow-lg hover:bg-forest hover:text-ivory flex items-center justify-center transform hover:scale-110 active:scale-95 focus:outline-none">
+      <span class="material-symbols-outlined text-xl">arrow_upward</span>
+    </button>
+
+    <!-- WhatsApp Quick Desk Button -->
+    <a href="https://wa.me/919811024891?text=Hello%20Dr.%20Aarav%20Sharma,%20I%20would%20like%20to%20enquire%20about%20a%20physiotherapy%20consultation." target="_blank" rel="noopener noreferrer" class="group flex items-center space-x-2.5 px-4 py-3 rounded-full bg-[#25D366] text-white shadow-xl hover:shadow-2xl hover:bg-[#20ba59] transition-all duration-300 transform hover:scale-105 active:scale-95">
+      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1 .587 1.706.848 2.806.848 3.181 0 5.767-2.586 5.767-5.766.001-3.182-2.585-5.768-5.767-5.768zm4.492 8.163c-.198.555-1.151 1.026-1.583 1.092-.423.064-.97.102-3.13-.79-2.586-1.07-4.238-3.738-4.367-3.91-.129-.172-1.042-1.385-1.042-2.641 0-1.256.657-1.874.89-2.132.233-.257.51-.322.68-.322.17 0 .341.002.49.009.157.008.368-.06.574.436.213.513.729 1.777.794 1.906.065.13.108.281.022.452-.086.172-.129.281-.257.43-.129.151-.271.336-.388.452-.129.13-.264.27-.114.526.151.257.669 1.103 1.436 1.785.986.877 1.817 1.149 2.074 1.277.257.129.408.108.559-.064.151-.172.644-.751.815-1.008.172-.257.344-.215.578-.129.233.086 1.488.701 1.745.83.257.129.43.193.493.301.065.108.065.623-.133 1.178z"/>
+      </svg>
+      <span class="text-xs font-bold tracking-wide font-body hidden sm:inline-block">WhatsApp Desk</span>
+    </a>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 12. ADVANCED GSAP SCROLL & INTERACTIVE SCRIPT ENGINE -->
+  <!-- ========================================================================= -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Register GSAP Plugins
+      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+      // -----------------------------------------------------------------------
+      // A. Sticky Header Animation
+      // -----------------------------------------------------------------------
+      const header = document.getElementById("main-header");
+      const navContainer = document.getElementById("nav-container");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.remove("py-6");
+          header.classList.add("py-3");
+          navContainer.classList.add("bg-white/95", "shadow-md");
+          navContainer.classList.remove("bg-white/70");
+        } else {
+          header.classList.add("py-6");
+          header.classList.remove("py-3");
+          navContainer.classList.remove("bg-white/95", "shadow-md");
+          navContainer.classList.add("bg-white/70");
+        }
+      });
+
+      // -----------------------------------------------------------------------
+      // B. Smooth Scroll Transitions for all anchor links
+      // -----------------------------------------------------------------------
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function(e) {
+          const targetId = this.getAttribute("href");
+          if (targetId && targetId !== "#") {
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              gsap.to(window, {
+                duration: 1,
+                scrollTo: {
+                  y: targetEl,
+                  offsetY: 80
+                },
+                ease: "power3.inOut"
+              });
+            }
+          }
+        });
+      });
+
+      // -----------------------------------------------------------------------
+      // C. Hero Entrance Animation (Staggered Load)
+      // -----------------------------------------------------------------------
+      const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      heroTl
+        .from("#hero-watermark", { opacity: 0, scale: 0.9, y: 30, duration: 1.4 })
+        .from("#hero-doctor-img", { opacity: 0, y: 40, duration: 1.2 }, "-=1.0")
+        .from("#hero-rating-badge", { opacity: 0, scale: 0.8, y: 20, duration: 0.8, ease: "back.out(1.7)" }, "-=0.6")
+        .from(".hero-item", { opacity: 0, y: 30, stagger: 0.15, duration: 0.9 }, "-=0.8")
+        .from("#hero-spine-container", { opacity: 0, scale: 0.85, duration: 1.2, ease: "elastic.out(1, 0.75)" }, "-=0.8");
+
+      // -----------------------------------------------------------------------
+      // D. Hero Parallax Scrolling Effects (Layered Depth)
+      // -----------------------------------------------------------------------
+      gsap.to("#hero-watermark", {
+        yPercent: 40,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      gsap.to("#hero-doctor-img", {
+        yPercent: 12,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      gsap.to("#hero-spine-container", {
+        yPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      // -----------------------------------------------------------------------
+      // E. SERVICES: Multi-Speed Parallax Background & Non-Blocking Reveal
+      // -----------------------------------------------------------------------
+      // Parallax Background Layer 1: Subtle Grounded Motion (Nearly fixed feel, 8% speed)
+      gsap.to("#services-parallax-bg", {
+        yPercent: -8,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#services",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      // Parallax Background Layer 2: Subtle kinetic wave lines
+      gsap.to("#services-kinetic-lines", {
+        yPercent: 8,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#services",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      // -----------------------------------------------------------------------
+      // Full-Width Photographic Banner Vertical Parallax Animation
+      // Image (120% oversized) moves upwards ~22% as user scrolls down,
+      // and downwards as user scrolls up. Continuous, smooth, 1:1 scroll-linked.
+      // -----------------------------------------------------------------------
+      const bannerImg = document.getElementById("cinematic-parallax-img");
+
+      if (bannerImg && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        ScrollTrigger.matchMedia({
+          // Desktop: Full parallax effect (~22% vertical travel)
+          "(min-width: 1024px)": function() {
+            gsap.fromTo(bannerImg, 
+              { yPercent: 11 },
+              {
+                yPercent: -11,
+                ease: "none",
+                force3D: true,
+                scrollTrigger: {
+                  trigger: "#cinematic-parallax",
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true,
+                  invalidateOnRefresh: true
+                }
+              }
+            );
+          },
+          // Tablet: Reduced parallax movement (~14% vertical travel)
+          "(min-width: 768px) and (max-width: 1023px)": function() {
+            gsap.fromTo(bannerImg, 
+              { yPercent: 7 },
+              {
+                yPercent: -7,
+                ease: "none",
+                force3D: true,
+                scrollTrigger: {
+                  trigger: "#cinematic-parallax",
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true,
+                  invalidateOnRefresh: true
+                }
+              }
+            );
+          },
+          // Mobile: Very subtle parallax (~7% travel) ensuring 60fps responsiveness
+          "(max-width: 767px)": function() {
+            gsap.fromTo(bannerImg, 
+              { yPercent: 3.5 },
+              {
+                yPercent: -3.5,
+                ease: "none",
+                force3D: true,
+                scrollTrigger: {
+                  trigger: "#cinematic-parallax",
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true,
+                  invalidateOnRefresh: true
+                }
+              }
+            );
+          }
+        });
+      }
+
+      // Service Cards Subtle Entrance (Guaranteed 100% visible immediately, no blank state)
+      gsap.fromTo(".service-card", 
+        { y: 24, opacity: 0.85 }, 
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: "power2.out",
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: "#services",
+            start: "top 90%",
+            once: true
+          }
+        }
+      );
+
+      // -----------------------------------------------------------------------
+      // F. About Section & Statistics Counter Animation
+      // -----------------------------------------------------------------------
+      gsap.from(".about-image-container", {
+        scrollTrigger: {
+          trigger: "#about",
+          start: "top 80%"
+        },
+        opacity: 0.5,
+        x: -30,
+        duration: 0.9,
+        ease: "power3.out"
+      });
+
+      gsap.from(".about-content", {
+        scrollTrigger: {
+          trigger: "#about",
+          start: "top 80%"
+        },
+        opacity: 0.5,
+        x: 30,
+        duration: 0.9,
+        ease: "power3.out"
+      });
+
+      // Animated Number Counters in Stat Cards
+      ScrollTrigger.create({
+        trigger: "#about",
+        start: "top 75%",
+        once: true,
+        onEnter: () => {
+          document.querySelectorAll(".counter").forEach(counter => {
+            const target = +counter.getAttribute("data-target");
+            const obj = { val: 0 };
+            gsap.to(obj, {
+              val: target,
+              duration: 2,
+              ease: "power2.out",
+              onUpdate: () => {
+                if (target >= 1000) {
+                  counter.textContent = Math.floor(obj.val).toLocaleString();
+                } else {
+                  counter.textContent = Math.floor(obj.val);
+                }
+              }
+            });
+          });
+        }
+      });
+
+      // -----------------------------------------------------------------------
+      // G. Fluid Scroll Scrub Testimonials Horizontal Slide
+      // -----------------------------------------------------------------------
+      const testimonialTrack = document.getElementById("testimonial-track");
+      
+      // Calculate max horizontal scroll distance
+      const getScrollDistance = () => {
+        return Math.max(0, testimonialTrack.scrollWidth - testimonialTrack.parentElement.offsetWidth + 60);
+      };
+
+      // Responsive ScrollTrigger: Pinned horizontal slide on desktop, fluid scrub on mobile
+      ScrollTrigger.matchMedia({
+        // Desktop / Laptop: Smooth pinned horizontal slide scrub as user scrolls down
+        "(min-width: 768px)": function() {
+          gsap.to(testimonialTrack, {
+            x: () => -getScrollDistance(),
+            ease: "none",
+            scrollTrigger: {
+              trigger: "#testimonials",
+              pin: true,
+              scrub: 1,
+              start: "top top",
+              end: () => "+=" + (getScrollDistance() + 450),
+              invalidateOnRefresh: true,
+              anticipatePin: 1,
+              onUpdate: (self) => {
+                const progress = self.progress;
+                const dots = document.querySelectorAll(".dot-indicator");
+                const activeIdx = Math.min(Math.floor(progress * dots.length), dots.length - 1);
+                dots.forEach((dot, i) => {
+                  if (i === activeIdx) {
+                    dot.classList.add("bg-forest", "w-6");
+                    dot.classList.remove("bg-travertine", "w-2");
+                  } else {
+                    dot.classList.remove("bg-forest", "w-6");
+                    dot.classList.add("bg-travertine", "w-2");
+                  }
+                });
+              }
+            }
+          });
+        },
+        // Mobile / Small screens: Fluid unpinned scrub as user scrolls past
+        "(max-width: 767px)": function() {
+          gsap.to(testimonialTrack, {
+            x: () => -getScrollDistance(),
+            ease: "none",
+            scrollTrigger: {
+              trigger: "#testimonials",
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: 1,
+              invalidateOnRefresh: true,
+              onUpdate: (self) => {
+                const progress = self.progress;
+                const dots = document.querySelectorAll(".dot-indicator");
+                const activeIdx = Math.min(Math.floor(progress * dots.length), dots.length - 1);
+                dots.forEach((dot, i) => {
+                  if (i === activeIdx) {
+                    dot.classList.add("bg-forest", "w-6");
+                    dot.classList.remove("bg-travertine", "w-2");
+                  } else {
+                    dot.classList.remove("bg-forest", "w-6");
+                    dot.classList.add("bg-travertine", "w-2");
+                  }
+                });
+              }
+            }
+          });
+        }
+      });
+
+      // Manual Navigation Buttons as complement
+      const prevBtn = document.getElementById("prev-test");
+      const nextBtn = document.getElementById("next-test");
+      let manualOffset = 0;
+
+      nextBtn.addEventListener("click", () => {
+        const cardWidth = 540;
+        manualOffset = Math.min(manualOffset + cardWidth, getScrollDistance());
+        gsap.to(testimonialTrack, { x: -manualOffset, duration: 0.6, ease: "power2.out" });
+      });
+
+      prevBtn.addEventListener("click", () => {
+        const cardWidth = 540;
+        manualOffset = Math.max(manualOffset - cardWidth, 0);
+        gsap.to(testimonialTrack, { x: -manualOffset, duration: 0.6, ease: "power2.out" });
+      });
+
+      // -----------------------------------------------------------------------
+      // H. Contact Section Subtle Reveal
+      // -----------------------------------------------------------------------
+      gsap.from(".contact-info", {
+        scrollTrigger: {
+          trigger: "#contact",
+          start: "top 80%"
+        },
+        opacity: 0.6,
+        y: 25,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+
+      gsap.from(".contact-form-wrapper", {
+        scrollTrigger: {
+          trigger: "#contact",
+          start: "top 80%"
+        },
+        opacity: 0.6,
+        y: 25,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+
+      // -----------------------------------------------------------------------
+      // I. Mobile Navigation Drawer Toggle
+      // -----------------------------------------------------------------------
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
+
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener("click", () => {
+          const isHidden = mobileMenu.classList.contains("hidden");
+          if (isHidden) {
+            mobileMenu.classList.remove("hidden");
+            mobileMenu.classList.add("flex");
+            menuIcon.textContent = "close";
+          } else {
+            mobileMenu.classList.add("hidden");
+            mobileMenu.classList.remove("flex");
+            menuIcon.textContent = "menu";
+          }
+        });
+
+        document.querySelectorAll(".mobile-nav-link").forEach(link => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+            mobileMenu.classList.remove("flex");
+            menuIcon.textContent = "menu";
+          });
+        });
+      }
+
+      // -----------------------------------------------------------------------
+      // J. Clinical Treatment Protocol Modal & Interactive Data Engine
+      // -----------------------------------------------------------------------
+      const serviceModal = document.getElementById("service-modal");
+      const closeServiceModal = document.getElementById("close-service-modal");
+      const modalBookCta = document.getElementById("modal-book-cta");
+
+      const serviceProtocols = {
+        "back-neck": {
+          title: "Back & Neck Pain Protocol",
+          badge: "TARGETED DECOMPRESSION",
+          conditionVal: "Back & Neck Pain",
+          desc: "Targeted spinal decompression, manual joint mobilization, and postural retraining for cervical, thoracic, and lumbar disc dysfunctions.",
+          techniques: [
+            "Mulligan Mobilization with Movement (MWM)",
+            "Non-surgical Cervical & Lumbar Traction",
+            "Deep Myofascial Trigger Point Decompression",
+            "Motor Control Stabilizer Retraining"
+          ],
+          timeline: "Typical course: 3 to 6 targeted 1-on-1 sessions. Most patients experience a 50–70% reduction in acute pain within the first 10 days."
+        },
+        "sports": {
+          title: "Sports Injury & High-Performance Rehab",
+          badge: "RAPID KINETIC RECOVERY",
+          conditionVal: "Sports Injury Rehab",
+          desc: "High-performance return-to-sport protocols, ACL & meniscus recovery, muscle tears, and kinetic chain strengthening.",
+          techniques: [
+            "Kinetic Chain Biomechanical Screening",
+            "Eccentric Tendinopathy Load Management",
+            "Dry Needling for Neuromuscular Hypertonicity",
+            "Return-to-Sport Metric Benchmarking"
+          ],
+          timeline: "Typical course: 4 to 12 weeks with weekly objective functional testing and progressive load acceleration."
+        },
+        "joint": {
+          title: "Joint Pain Management Protocol",
+          badge: "ARTICULATION MECHANICS",
+          conditionVal: "Joint Pain (Hip, Knee, Shoulder)",
+          desc: "Osteoarthritis protocols, shoulder impingement decompression, and hip mechanics optimization for fluid articulation.",
+          techniques: [
+            "Glenohumeral & Acetabular Joint Glides",
+            "Synovial Fluid Circulation Drills",
+            "Rotator Cuff & Hip Abductor Rebalancing",
+            "Low-impact Kinetic Load Transfer"
+          ],
+          timeline: "Typical course: 4 to 8 targeted sessions aimed at eliminating impingement and restoring full functional range."
+        },
+        "post-op": {
+          title: "Post-Operative Orthopedic Rehabilitation",
+          badge: "SURGICAL RECOVERY PATHWAY",
+          conditionVal: "Post-Operative Recovery",
+          desc: "Structured protocols for ACL surgery, rotator cuff repair, and joint replacements strictly adhering to surgical guidelines.",
+          techniques: [
+            "Early Cryo-compression & Lymphatic Drain",
+            "Safe Phase I Passive/Active-Assisted ROM",
+            "Gait Mechanics Normalization",
+            "Close Surgeon-Physio Milestone Alignment"
+          ],
+          timeline: "Phase I to Phase IV progressive protocol (6 to 16 weeks) strictly respecting tissue healing and graft maturation."
+        },
+        "neuro": {
+          title: "Neurological & Vestibular Rehabilitation",
+          badge: "NEUROMUSCULAR RE-EDUCATION",
+          conditionVal: "Neurological Rehabilitation",
+          desc: "Neuromuscular re-education, balance and vestibular retraining, stroke rehabilitation, and progressive functional gait rebuilding.",
+          techniques: [
+            "Proprioceptive Neuromuscular Facilitation (PNF)",
+            "Vestibular Ocular Reflex (VOR) Retraining",
+            "Dynamic Perturbation Balance Drills",
+            "Task-Oriented Everyday Kinetic Relearning"
+          ],
+          timeline: "Individualized milestones focused on autonomy, fall-prevention, and restoring dynamic center-of-gravity control."
+        },
+        "posture": {
+          title: "Posture, Mobility & Workstation Ergonomics",
+          badge: "ERGONOMIC BALANCE",
+          conditionVal: "Ergonomics & Kinetic Alignment",
+          desc: "Ergonomic workspace assessment, kinetic chain screening, and functional flexibility training designed for long-term spinal health.",
+          techniques: [
+            "3D Sagittal Postural Alignment Audit",
+            "Thoracic Kyphosis & Text-Neck Correction",
+            "Desk Ergonomic Geometry Consultation",
+            "Micro-break Kinetic Mobility Routines"
+          ],
+          timeline: "Typical course: 2 to 4 sessions with permanent ergonomic adjustments and personalized home mobility prescriptions."
+        }
+      };
+
+      let activeSelectedCondition = "Sports Injury Rehab";
+
+      document.querySelectorAll(".service-modal-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const key = btn.getAttribute("data-service-key") || "sports";
+          const data = serviceProtocols[key] || serviceProtocols["sports"];
+
+          document.getElementById("modal-service-title").textContent = data.title;
+          document.getElementById("modal-service-badge").textContent = data.badge;
+          document.getElementById("modal-service-desc").textContent = data.desc;
+          document.getElementById("modal-service-timeline").textContent = data.timeline;
+
+          const techContainer = document.getElementById("modal-service-techniques");
+          techContainer.innerHTML = data.techniques.map(tech => `
+            <div class="flex items-center gap-2 p-2.5 rounded-xl bg-ivory border border-travertine/70">
+              <span class="material-symbols-outlined text-forest text-sm">check_circle</span>
+              <span class="font-medium text-charcoal">${tech}</span>
+            </div>
+          `).join("");
+
+          activeSelectedCondition = data.conditionVal;
+
+          serviceModal.classList.remove("hidden");
+          serviceModal.classList.add("flex");
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      if (closeServiceModal) {
+        closeServiceModal.addEventListener("click", () => {
+          serviceModal.classList.add("hidden");
+          serviceModal.classList.remove("flex");
+          document.body.style.overflow = "";
+        });
+      }
+
+      if (serviceModal) {
+        serviceModal.addEventListener("click", (e) => {
+          if (e.target === serviceModal) {
+            serviceModal.classList.add("hidden");
+            serviceModal.classList.remove("flex");
+            document.body.style.overflow = "";
+          }
+        });
+      }
+
+      if (modalBookCta) {
+        modalBookCta.addEventListener("click", () => {
+          serviceModal.classList.add("hidden");
+          serviceModal.classList.remove("flex");
+          document.body.style.overflow = "";
+
+          const conditionSelect = document.getElementById("patient-condition");
+          if (conditionSelect) {
+            conditionSelect.value = activeSelectedCondition;
+          }
+
+          const contactSection = document.getElementById("contact");
+          if (contactSection) {
+            contactSection.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      }
+
+      // -----------------------------------------------------------------------
+      // K. In-Clinic vs Virtual Reactive Guidance in Booking Form
+      // -----------------------------------------------------------------------
+      const modeRadios = document.querySelectorAll(".mode-radio");
+      const modeGuidanceText = document.getElementById("mode-guidance-text");
+
+      modeRadios.forEach(radio => {
+        radio.addEventListener("change", (e) => {
+          if (e.target.value.includes("In-Clinic")) {
+            modeGuidanceText.textContent = "Suite 402, Block E, Greater Kailash II (GK-2), South Delhi — Valet parking available.";
+          } else {
+            modeGuidanceText.textContent = "Secure HD Encrypted Video Call link will be dispatched via WhatsApp & Email upon slot confirmation.";
+          }
+        });
+      });
+
+      // -----------------------------------------------------------------------
+      // L. Interactive Clinical Symptom Filter Bar
+      // -----------------------------------------------------------------------
+      const filterBtns = document.querySelectorAll(".symptom-filter-btn");
+      const serviceCards = document.querySelectorAll(".service-card");
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const filter = btn.getAttribute("data-filter");
+
+          filterBtns.forEach(b => {
+            b.classList.remove("bg-forest", "text-ivory", "shadow-sm");
+            b.classList.add("bg-white/80", "text-charcoal");
+          });
+          btn.classList.add("bg-forest", "text-ivory", "shadow-sm");
+          btn.classList.remove("bg-white/80", "text-charcoal");
+
+          serviceCards.forEach(card => {
+            const cardCat = card.getAttribute("data-category");
+            if (filter === "all" || cardCat === filter) {
+              gsap.to(card, { opacity: 1, scale: 1, duration: 0.35, overwrite: true });
+            } else {
+              gsap.to(card, { opacity: 0.25, scale: 0.97, duration: 0.35, overwrite: true });
+            }
+          });
+        });
+      });
+
+      // -----------------------------------------------------------------------
+      // M. Consultation Booking Date Picker Initialization
+      // -----------------------------------------------------------------------
+      const dateInput = document.getElementById("patient-date");
+      if (dateInput) {
+        const today = new Date();
+        const tomorrow = new Date();
+        tomorrow.setDate(today.getDate() + 1);
+        const yyyy = tomorrow.getFullYear();
+        const mm = String(tomorrow.getMonth() + 1).padStart(2, "0");
+        const dd = String(tomorrow.getDate()).padStart(2, "0");
+        dateInput.min = today.toISOString().split("T")[0];
+        dateInput.value = `${yyyy}-${mm}-${dd}`;
+      }
+
+      // -----------------------------------------------------------------------
+      // N. Booking Form Submission & Confirmation Modal Engine
+      // -----------------------------------------------------------------------
+      const consultForm = document.getElementById("consultation-form");
+      const bookingModal = document.getElementById("booking-modal");
+      const closeBookingModal = document.getElementById("close-booking-modal");
+      const downloadIcsBtn = document.getElementById("download-ics-btn");
+
+      let currentBookingData = {
+        name: "Priya Malhotra",
+        condition: "Sports Injury Rehab",
+        mode: "In-Clinic (GK-2, South Delhi)",
+        date: "2026-11-04",
+        timeslot: "Morning (08:30 AM – 12:00 PM)",
+        ref: "#AS-GK2-8491"
+      };
+
+      if (consultForm) {
+        consultForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const submitBtn = consultForm.querySelector('button[type="submit"]');
+          const originalBtnText = submitBtn ? submitBtn.innerHTML : "Submit Consultation Request";
+
+          try {
+            if (submitBtn) {
+              submitBtn.disabled = true;
+              submitBtn.innerHTML = `
+                <span class="inline-flex items-center">
+                  <span class="w-4 h-4 border-2 border-ivory border-t-transparent rounded-full animate-spin mr-2"></span>
+                  Confirming with Clinic Desk...
+                </span>
+              `;
+            }
+
+            const name = document.getElementById("patient-name")?.value?.trim() || "";
+            const phone = document.getElementById("patient-phone")?.value?.trim() || "";
+            const email = document.getElementById("patient-email")?.value?.trim() || "";
+            const condition = document.getElementById("patient-condition")?.value || "Sports Injury Rehab";
+            const mode = document.querySelector('input[name="mode"]:checked')?.value || "In-Clinic (GK-2, South Delhi)";
+            const date = document.getElementById("patient-date")?.value || "";
+            const timeslot = document.getElementById("patient-timeslot")?.value || "Morning (08:30 AM – 12:00 PM)";
+            const symptoms = document.getElementById("patient-symptoms")?.value?.trim() || "";
+            const consent = document.getElementById("consent")?.checked || false;
+
+            const payload = {
+              name,
+              phone,
+              email,
+              condition,
+              mode,
+              date,
+              timeslot,
+              symptoms,
+              consent
+            };
+
+            let refCode = `#AS-GK2-${Math.floor(1000 + Math.random() * 9000)}`;
+
+            // Attempt backend persistence with resilient timeout
+            try {
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+              const response = await fetch('/api/book', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+                signal: controller.signal
+              });
+              clearTimeout(timeoutId);
+
+              if (response.ok) {
+                const result = await response.json();
+                if (result.data && result.data.referenceCode) {
+                  refCode = result.data.referenceCode;
+                }
+              }
+            } catch (networkErr) {
+              // Graceful degradation for static hosting (e.g. GitHub Pages) or offline usage
+              console.info('[SYNC] Static/offline mode detected. Falling back to secure local state store.', networkErr);
+              try {
+                const stored = JSON.parse(localStorage.getItem('dr_aarav_appointments') || '[]');
+                stored.push({ ...payload, refCode, localSavedAt: new Date().toISOString() });
+                localStorage.setItem('dr_aarav_appointments', JSON.stringify(stored));
+              } catch (_) {}
+            }
+
+            currentBookingData = { name, condition, mode, date, timeslot, ref: refCode };
+
+            document.getElementById("confirm-ref-code").textContent = refCode;
+            document.getElementById("confirm-patient-name").textContent = name;
+            document.getElementById("confirm-condition").textContent = condition;
+            document.getElementById("confirm-mode").textContent = mode;
+            document.getElementById("confirm-datetime").textContent = `${date} • ${timeslot.split(' ')[0]}`;
+
+            bookingModal.classList.remove("hidden");
+            bookingModal.classList.add("flex");
+            document.body.style.overflow = "hidden";
+
+            consultForm.reset();
+            // Reinitialize date
+            if (dateInput) {
+              const today = new Date();
+              const tomorrow = new Date();
+              tomorrow.setDate(today.getDate() + 1);
+              dateInput.value = `${tomorrow.getFullYear()}-${String(tomorrow.getMonth()+1).padStart(2,'0')}-${String(tomorrow.getDate()).padStart(2,'0')}`;
+            }
+
+          } catch (err) {
+            console.error('[BOOKING_FATAL_ERROR]', err);
+            alert('A momentary transmission issue occurred. Please reach out to our South Delhi clinic desk directly at +91 98110 24891 or WhatsApp.');
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalBtnText;
+            }
+          }
+        });
+      }
+
+      if (closeBookingModal) {
+        closeBookingModal.addEventListener("click", () => {
+          bookingModal.classList.add("hidden");
+          bookingModal.classList.remove("flex");
+          document.body.style.overflow = "";
+        });
+      }
+
+      if (bookingModal) {
+        bookingModal.addEventListener("click", (e) => {
+          if (e.target === bookingModal) {
+            bookingModal.classList.add("hidden");
+            bookingModal.classList.remove("flex");
+            document.body.style.overflow = "";
+          }
+        });
+      }
+
+      // Download .ICS Calendar Invite File
+      if (downloadIcsBtn) {
+        downloadIcsBtn.addEventListener("click", () => {
+          const cleanDate = currentBookingData.date.replace(/-/g, "");
+          const dtStart = `${cleanDate}T090000Z`;
+          const dtEnd = `${cleanDate}T100000Z`;
+
+          const icsContent = [
+            "BEGIN:VCALENDAR",
+            "VERSION:2.0",
+            "PRODID:-//Dr Aarav Sharma Physiotherapy//Consultation Invite//EN",
+            "BEGIN:VEVENT",
+            "UID:" + Date.now() + "@draaravsharma.in",
+            "DTSTAMP:" + cleanDate + "T080000Z",
+            "DTSTART:" + dtStart,
+            "DTEND:" + dtEnd,
+            "SUMMARY:Physiotherapy Consultation with Dr. Aarav Sharma",
+            "DESCRIPTION:Clinical Assessment for " + currentBookingData.condition + " (" + currentBookingData.timeslot + "). Ref: " + currentBookingData.ref,
+            "LOCATION:The Movement Sanctuary, Suite 402, Block E, Greater Kailash II, South Delhi 110048, India",
+            "STATUS:CONFIRMED",
+            "END:VEVENT",
+            "END:VCALENDAR"
+          ].join("\r\n");
+
+          const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+          const link = document.createElement("a");
+          link.href = window.URL.createObjectURL(blob);
+          link.setAttribute("download", `Dr_Aarav_Sharma_Consultation_${currentBookingData.ref.replace('#','')}.ics`);
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+
+      // -----------------------------------------------------------------------
+      // O. Back to Top Button Logic
+      // -----------------------------------------------------------------------
+      const backToTopBtn = document.getElementById("back-to-top");
+      if (backToTopBtn) {
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 400) {
+            backToTopBtn.classList.remove("opacity-0", "pointer-events-none");
+            backToTopBtn.classList.add("opacity-100", "pointer-events-auto");
+          } else {
+            backToTopBtn.classList.add("opacity-0", "pointer-events-none");
+            backToTopBtn.classList.remove("opacity-100", "pointer-events-auto");
+          }
+        });
+
+        backToTopBtn.addEventListener("click", () => {
+          gsap.to(window, { duration: 1, scrollTo: { y: 0 }, ease: "power3.inOut" });
+        });
+      }
+
+      // -----------------------------------------------------------------------
+      // P. 3D Mouse Parallax Tilt on 3D Glass Spine Sculpture
+      // -----------------------------------------------------------------------
+      const spineContainer = document.getElementById("hero-spine-container");
+      const glassSpine = document.getElementById("hero-glass-spine");
+      if (spineContainer && glassSpine) {
+        spineContainer.addEventListener("mousemove", (e) => {
+          const rect = spineContainer.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          gsap.to(glassSpine, {
+            rotationY: x * 18,
+            rotationX: -y * 18,
+            transformPerspective: 800,
+            ease: "power1.out",
+            duration: 0.4
+          });
+        });
+        spineContainer.addEventListener("mouseleave", () => {
+          gsap.to(glassSpine, {
+            rotationY: 0,
+            rotationX: 0,
+            ease: "power2.out",
+            duration: 0.8
+          });
+        });
+      }
+
+      // -----------------------------------------------------------------------
+      // Q. ScrollSpy Active Header Navigation
+      // -----------------------------------------------------------------------
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      window.addEventListener("scroll", () => {
+        let currentSection = "";
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 120;
+          if (window.scrollY >= sectionTop) {
+            currentSection = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove("text-forest", "font-bold");
+          link.classList.add("text-charcoal-muted");
+          if (link.getAttribute("href") === `#${currentSection}`) {
+            link.classList.add("text-forest", "font-bold");
+            link.classList.remove("text-charcoal-muted");
+          }
+        });
+      });
+
+    });
+  </script>
+</body>
+</html>

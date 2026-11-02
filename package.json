@@ -1,0 +1,18 @@
+{
+  "name": "dr-aarav-sharma-physiotherapy",
+  "version": "1.0.0",
+  "description": "Premium Physiotherapist Personal Brand Website for Dr. Aarav Sharma",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "physiotherapy",
+    "sports-rehabilitation",
+    "delhi",
+    "dr-aarav-sharma"
+  ],
+  "author": "Dr. Aarav Sharma",
+  "license": "MIT"
+}

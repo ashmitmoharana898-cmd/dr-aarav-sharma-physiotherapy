@@ -1,0 +1,17 @@
+[
+  {
+    "id": "e2a3b45c-9619-48c4-bb9e-23fc3b705e30",
+    "referenceCode": "#AS-GK2-5780",
+    "name": "Arjun Singhania",
+    "phone": "+91 98123 45678",
+    "email": "arjun@example.com",
+    "condition": "Sports Injury Rehab",
+    "mode": "In-Clinic (GK-2, South Delhi)",
+    "date": "2026-11-10",
+    "timeslot": "Morning (08:30 AM – 12:00 PM)",
+    "symptoms": "Right knee meniscus discomfort after marathon training",
+    "submittedAt": "2026-11-02T17:05:39.302Z",
+    "status": "PENDING_COORDINATOR_CALL",
+    "assignedClinic": "The Movement Sanctuary, Suite 402, Block E, GK-2, South Delhi"
+  }
+]
